@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-background w-full scroll-smooth;
+    font-family: ProductSans, system-ui, sans-serif;
+  }
+  .card {
+    @apply bg-softWhite rounded-xl drop-shadow-xl;
+  }
+
+  .input {
+    @apply border rounded-md shadow-sm placeholder-slate-400 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary invalid:text-primary focus:invalid:border-primary focus:invalid:ring-primary;
+  }
+}
+
+@font-face {
+  font-family: 'ProductSans';
+  src: url('/fonts/Product-Sans/PRODUCT-SANS-REGULAR.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/Gilroy/Gilroy-Bold.woff2') format('woff2');
+}
