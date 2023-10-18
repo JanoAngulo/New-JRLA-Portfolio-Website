@@ -4,11 +4,16 @@
 
 @layer base {
   html {
-    @apply bg-background w-full scroll-smooth;
+    @apply w-full scroll-smooth;
     font-family: ProductSans, system-ui, sans-serif;
   }
+
+  body {
+    @apply dark:bg-zinc-800 bg-background;
+  }
+
   .card {
-    @apply bg-softWhite rounded-xl drop-shadow-xl;
+    @apply dark:bg-zinc-900 bg-softWhite rounded-xl drop-shadow-xl;
   }
 
   .input {

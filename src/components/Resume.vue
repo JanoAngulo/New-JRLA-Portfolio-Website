@@ -2,16 +2,16 @@
   <div id="Resume" class="scroll-mt-40">
     <div class="grid px-5 mb-32 lg:gap-6 md:gap-10 lg:px-14">
       <div class="pb-6 text-center md:pb-0 font-Gilroy">
-        <p class="text-lg uppercase text-primary">know me more</p>
-        <p class="py-3 text-5xl capitalize xl:text-7xl">my resume</p>
+        <p class="text-lg uppercase dark:text-secondary text-primary">know me more</p>
+        <p class="py-3 text-5xl capitalize dark:text-white xl:text-7xl">my resume</p>
       </div>
 
       <div class="grid col-auto gap-y-20 lg:gap-x-10 xl:grid-cols-4 2xl:grid-cols-3">
         <div class="h-full md:col-span-2">
           <div class="h-full grid-cols-1 md:grid-cols-3">
-            <div class="flex flex-col justify-between h-full">
+            <div class="flex flex-col h-full">
               <div>
-                <p class="pb-4 text-3xl text-center capitalize font-Gilroy lg:text-left">education</p>
+                <p class="pb-4 text-3xl text-center capitalize font-Gilroy lg:text-left dark:text-white">education</p>
 
                 <div class="grid gap-4">
                   <div class="flex">
@@ -21,12 +21,11 @@
                       </div>
                       <hr class="border-2 w-[2vh] border-secondary hidden lg:flex" />
                     </div>
-                    <div class="grid w-full gap-4 p-5 transition-colors duration-300 card hover:text-white hover:bg-primary">
+                    <div class="grid w-full gap-4 p-5 transition-colors duration-300 card dark:text-white hover:text-white hover:bg-primary">
                       <p class="text-xl sm:text-2xl 2xl:text-3xl xl:text-2xl lg:text-3xl font-Gilroy">Bachelor of Science in Information and Techology</p>
                       <div class="text-lg 2xl:text-xl">
                         <p>Major in Web and Mobile Development</p>
                         <p>Bulacan State University</p>
-                        <p>College | August 2018 - July 15, 2022</p>
                       </div>
 
                       <hr class="w-full border-2 border-secondary" />
@@ -41,12 +40,10 @@
                       </div>
                       <hr class="border-2 w-[2vh] border-secondary hidden lg:flex" />
                     </div>
-                    <div class="grid gap-4 p-5 transition-colors duration-300 card hover:text-white hover:bg-primary">
+                    <div class="grid gap-4 p-5 transition-colors duration-300 card hover:text-white dark:text-white hover:bg-primary">
                       <p class="text-xl sm:text-2xl 2xl:text-3xl xl:text-2xl lg:text-3xl font-Gilroy">Science, Technology, Engineering, and Mathematics</p>
                       <div class="text-lg 2xl:text-xl">
                         <p>La Consolacion University Philippines</p>
-                        <p>Senior Highschool | 2016-2018</p>
-                        <p>Junior Highschool | 2012-2016</p>
                       </div>
 
                       <hr class="w-full border-2 border-secondary" />
@@ -57,9 +54,9 @@
               </div>
 
               <div class="grid gap-4">
-                <p class="pt-8 pb-4 text-3xl text-center capitalize font-Gilroy lg:text-left">Work Experience</p>
+                <p class="pt-8 pb-4 text-3xl text-center capitalize font-Gilroy lg:text-left dark:text-white">Work Experience</p>
 
-                <div class="grid gap-4">
+                <div class="grid gap-4 dark:text-white">
                   <div v-for="(work, index) in data.resume" :key="index" class="flex">
                     <div class="items-center hidden lg:flex">
                       <div class="grid w-5 h-5 rounded-full bg-secondary place-content-center">
@@ -84,7 +81,7 @@
         </div>
 
         <div class="col-span-2 2xl:col-span-1">
-          <p class="pb-4 text-xl text-center md:text-3xl lg:text-2xl xl:text-3xl font-Gilroy">You can download my resume here</p>
+          <p class="pb-4 text-xl text-center md:text-3xl lg:text-2xl xl:text-3xl font-Gilroy dark:text-white">You can download my resume here</p>
           <div class="grid w-full place-content-center">
             <div class="xl:w-full sm:w-[30rem] w-full">
               <div class="grid gap-5 p-5 card">
@@ -108,7 +105,7 @@
 </template>
 
 <script>
-import Resume from '@/dist/assets/John_Russel_L_Angulo_CV-42870fef.pdf'
+import Resume from '@/assets/img/John_Russel_L_Angulo_CV.pdf'
 import data from './PortfolioData'
 export default {
   name: 'Resume',
