@@ -14,7 +14,7 @@ export default {
   name: 'portfolioData',
 
   portfolio: {
-    "websites": [
+    websites: [
       {
         thumbnail: coreProc,
         feature: 'website',
@@ -56,11 +56,9 @@ export default {
       }
     ],
 
-    "UI/UX Design": [
+    'UI/UX Design': [],
 
-    ],
-
-    "videos": [
+    videos: [
       {
         thumbnail: riteNLite,
         feature: 'Video Commercial',
@@ -86,7 +84,7 @@ export default {
       }
     ],
 
-    "vector arts": [
+    'vector arts': [
       {
         thumbnail: underwater,
         feature: 'vector art',
@@ -114,6 +112,11 @@ export default {
   },
 
   resume: [
+    {
+      title: 'UI Engineer',
+      date: 'CoreProc, Inc. | 2022 - Present',
+      about: 'Creating UI/UX via Figma and Adobe XD, making Front-End websites using Vuejs, Next.js, Sass, and TailwindCss'
+    },
     {
       title: 'Freelance Video Editor',
       date: 'Upwork | 2021 - July 2022',

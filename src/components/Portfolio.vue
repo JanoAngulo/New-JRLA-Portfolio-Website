@@ -1,4 +1,4 @@
-<template>
+script<template>
   <div id="Portfolio" class="scroll-mt-40">
     <div class="flex flex-col gap-6 px-5 mb-32 lg:px-14">
       <div class="text-center font-Gilroy">
@@ -6,10 +6,10 @@
         <p class="py-3 text-5xl capitalize xl:text-7xl dark:text-white">my portfolio</p>
       </div>
 
-      <div v-for="(main, index) in data.portfolio" :key="index" :id="index">
+      <div v-for="(category, index) in data.portfolio" :key="index" :id="index">
         <p class="pb-4 text-3xl capitalize font-Gilroy dark:text-secondary">{{ index }}</p>
-        <swiper class="mySwiper" :grab-cursor="true" :slidesPerView="slidesCount" :modules="modules" :autoplay="{ delay: 3500, disableOnInteraction: false }" :space-between="20">
-          <swiper-slide :id="portfolioId(item.title)" class="p-5 transition-all duration-200 ease-out card group lg:hover:-translate-y-2" v-for="(item, index) in main" :key="index">
+        <swiper class="mySwiper" :loop="isDivisibleByThree(category)" :grab-cursor="true" :slidesPerView="slidesCount" :modules="modules" :autoplay="{ delay: 3500, disableOnInteraction: false }" :space-between="20">
+          <swiper-slide :id="portfolioId(item.title)" class="p-5 transition-all duration-200 ease-out card group lg:hover:-translate-y-2" v-for="(item, index) in category" :key="index">
             <div class="grid gap-4">
               <div @click="passModalData(item)" class="cursor-pointer relative grid h-full w-fit ease-out lg:group-hover:scale-[1.02] transition-all duration-300">
                 <img class="object-cover rounded-lg aspect-video" :src="item.thumbnail" :alt="item.title + ' Image'" />
@@ -51,91 +51,72 @@
   </div>
 </template>
 
-<script>
-import data from './PortfolioData.js'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Autoplay } from 'swiper/modules'
-export default {
-  name: 'Portfolio',
-
-  components: {
-    Swiper,
-    SwiperSlide
-  },
-
-  setup() {
-    return {
-      modules: [Autoplay]
-    }
-  },
-
-  data() {
-    return {
-      data,
-      toggleModal: false,
-      modalData: [],
-      slidesCount: 3
-    }
-  },
-
-  mounted() {
-    if (window.innerWidth >= 1024) {
-      this.slidesCount = 3
-    } else if (window.innerWidth >= 768) {
-      this.slidesCount = 2
-    } else {
-      this.slidesCount = 1
-    }
-  },
-
-  created() {
-    window.addEventListener('resize', this.windowSize)
-  },
-
-  methods: {
-    windowSize() {
-      if (window.innerWidth >= 1024) {
-        this.slidesCount = 3
-      } else if (window.innerWidth >= 768) {
-        this.slidesCount = 2
-      } else {
-        this.slidesCount = 1
-      }
-    },
-
-    passModalData(data) {
-      this.modalData = data
-      this.openModal()
-    },
-
-    openModal() {
-      this.toggleModal = true
-      document.body.classList.add('overflow-hidden')
-      setTimeout(() => {
-        document.getElementById('modalContainer').classList.remove('opacity-0')
-        document.getElementById('modalContainer').classList.remove('translate-y-3')
-      }, 100)
-    },
-
-    closeModal() {
-      document.body.classList.remove('overflow-hidden')
-      document.getElementById('modalContainer').classList.add('opacity-0')
-      document.getElementById('modalContainer').classList.add('translate-y-3')
-      setTimeout(() => {
-        this.toggleModal = false
-      }, 300)
-    },
-
-    portfolioId(data) {
-      return data[0].toLowerCase() + data.replace(/[,.' ]/g, '').slice(1)
-    }
-  }
-}
-</script>
-
 <style>
 .mySwiper {
   padding-top: 1rem;
   padding-bottom: 2rem;
 }
 </style>
+
+<script setup>
+import { ref, onMounted, onUnmounted, watchEffect } from 'vue'
+import data from './PortfolioData.js'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Autoplay } from 'swiper/modules'
+
+const modules = [Autoplay]
+const toggleModal = ref(false)
+const modalData = ref([])
+const slidesCount = ref(3)
+
+const windowSize = () => {
+  if (window.innerWidth >= 1024) {
+    slidesCount.value = 3
+  } else if (window.innerWidth >= 768) {
+    slidesCount.value = 2
+  } else {
+    slidesCount.value = 1
+  }
+}
+
+onMounted(() => {
+  windowSize()
+  window.addEventListener('resize', windowSize)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', windowSize)
+})
+
+const passModalData = (data) => {
+  modalData.value = data
+  openModal()
+}
+
+const openModal = () => {
+  toggleModal.value = true
+  document.body.classList.add('overflow-hidden')
+  setTimeout(() => {
+    document.getElementById('modalContainer').classList.remove('opacity-0')
+    document.getElementById('modalContainer').classList.remove('translate-y-3')
+  }, 100)
+}
+
+const closeModal = () => {
+  document.body.classList.remove('overflow-hidden')
+  document.getElementById('modalContainer').classList.add('opacity-0')
+  document.getElementById('modalContainer').classList.add('translate-y-3')
+  setTimeout(() => {
+    toggleModal.value = false
+  }, 300)
+}
+
+const portfolioId = (data) => {
+  return data[0].toLowerCase() + data.replace(/[,.' ]/g, '').slice(1)
+}
+
+const isDivisibleByThree = (category) => {
+  let length = category.length
+  return length > 3 && length % 3 === 0
+}
+</script>

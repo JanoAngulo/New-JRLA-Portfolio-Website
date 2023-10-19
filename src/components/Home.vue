@@ -40,7 +40,7 @@
       </div>
     </div>
     <div class="hidden lg:grid place-content-center pt-14">
-      <div class="hover:scale-[1.02] duration-150 ease-out max-w-[39rem] min-w-0 p-5 rounded-3xl card">
+      <div class="hover:scale-[1.02] duration-150 ease-out transition-transform max-w-[39rem] min-w-0 p-5 rounded-3xl card">
         <swiper class="pointer-events-none rounded-xl" :modules="modules" :autoplay="{ delay: 3500 }" :space-between="20" :loop="true">
           <swiper-slide><img class="rounded-xl" src="@/assets/img/picture.png" alt="" /></swiper-slide>
           <swiper-slide><img class="rounded-xl" src="@/assets/img/picture2.png" alt="" /></swiper-slide>
@@ -51,29 +51,12 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import VueTypewriterEffect from 'vue-typewriter-effect'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay } from 'swiper/modules'
+import { ref } from 'vue'
 
-export default {
-  name: 'Home',
-  components: {
-    VueTypewriterEffect,
-    Swiper,
-    SwiperSlide
-  },
-
-  setup() {
-    return {
-      modules: [Autoplay]
-    }
-  },
-
-  data() {
-    return {
-      titles: ['front-end developer.', 'UI/UX Designer.', 'video editor.', 'vector artist.']
-    }
-  }
-}
+const titles = ref(['front-end developer.', 'UI/UX Designer.', 'video editor.', 'vector artist.'])
+const modules = [Autoplay]
 </script>

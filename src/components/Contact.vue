@@ -1,6 +1,6 @@
 <template>
   <div id="Contact" class="scroll-mt-32">
-    <div class="grid px-5 mb-32 lg:gap-6 md:gap-10 lg:px-14">
+    <div class="grid px-5 mb-5 md:mb-20 lg:gap-6 md:gap-10 lg:px-14">
       <div class="pb-6 text-center md:pb-0 font-Gilroy">
         <p class="text-lg uppercase dark:text-secondary text-primary">Contact</p>
         <p class="py-3 text-5xl capitalize dark:text-white xl:text-7xl">contact with me</p>
@@ -32,26 +32,26 @@
           </div>
         </div>
         <div class="col-span-2">
-          <form action="" class="grid grid-cols-6 gap-6 p-5 card">
+          <form action="https://formspree.io/f/meqbvbnr" method="POST" class="grid grid-cols-6 gap-6 p-5 card">
             <div class="grid md:col-span-4 col-span-full">
               <label for="name" class="pb-2 capitalize dark:text-white">your name <span class="text-primary">*</span></label>
-              <input class="w-full p-3 border rounded-lg input" placeholder="Input your name here" id="name" name="name" type="text" required />
+              <input class="w-full p-3 border rounded-lg input" placeholder="Input your name here" id="name" name="Full Name" type="text" required />
             </div>
             <div class="grid md:col-span-2 col-span-full">
               <label for="phone" class="pb-2 capitalize dark:text-white">phone number <span class="text-primary">*</span></label>
-              <input class="w-full p-3 border rounded-lg input" placeholder="(900) 123 4567" id="phone" name="phone" type="tel" required />
+              <input class="w-full p-3 border rounded-lg input" placeholder="(900) 123-4567" id="phone" name="Mobile Number" maxlength="14" type="tel" v-maska data-maska="(###) ###-####" required />
             </div>
             <div class="grid col-span-full">
               <label for="email" class="pb-2 capitalize dark:text-white">email address <span class="text-primary">*</span></label>
-              <input class="w-full p-3 border rounded-lg input" placeholder="juandelacruz@gmail.com" id="email" name="email" type="email" required />
+              <input class="w-full p-3 border rounded-lg input" placeholder="juandelacruz@gmail.com" id="email" name="Email Address" type="email" required />
             </div>
             <div class="grid col-span-full">
               <label for="subject" class="pb-2 capitalize dark:text-white">subject <span class="text-primary">*</span></label>
-              <input class="w-full p-3 border rounded-lg input" placeholder="Input your subject here" id="email" name="subject" type="text" required />
+              <input class="w-full p-3 border rounded-lg input" placeholder="Input your subject here" id="subject" name="Subject" type="text" required />
             </div>
             <div class="grid col-span-full">
               <label for="message" class="pb-2 capitalize dark:text-white">your message <span class="text-primary">*</span></label>
-              <textarea class="w-full h-full p-3 border rounded-lg resize-none input" placeholder="What do you like to talk about?" id="email" name="message" type="text" cols="30" :rows="rowCount" required></textarea>
+              <textarea class="w-full h-full p-3 border rounded-lg resize-none input" placeholder="What do you like to talk about?" id="email" name="Message" type="text" cols="30" :rows="rowCount" required></textarea>
             </div>
 
             <button type="submit" class="py-3 text-center text-black capitalize rounded-md shadow-sm col-span-full hover:text-white hover:bg-primary bg-secondary font-Gilroy">Submit</button>
@@ -62,39 +62,28 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Contact',
-  data() {
-    return {
-      rowCount: 8
-    }
-  },
+<script setup>
+import { vMaska } from 'maska'
+import { ref, onMounted, onUnmounted } from 'vue'
 
-  mounted() {
-    if (window.innerWidth > 1440) {
-      this.rowCount = 8
-    } else if (window.innerWidth >= 1024) {
-      this.rowCount = 6
-    } else if (window.innerWidth <= 768) {
-      this.rowCount = 4
-    }
-  },
+const rowCount = ref(8)
 
-  created() {
-    window.addEventListener('resize', this.windowSize)
-  },
-
-  methods: {
-    windowSize() {
-      if (window.innerWidth > 1440) {
-        this.rowCount = 8
-      } else if (window.innerWidth >= 1024) {
-        this.rowCount = 6
-      } else if (window.innerWidth <= 768) {
-        this.rowCount = 4
-      }
-    }
+const windowSize = () => {
+  if (window.innerWidth > 1440) {
+    rowCount.value = 8
+  } else if (window.innerWidth >= 1024) {
+    rowCount.value = 6
+  } else if (window.innerWidth <= 768) {
+    rowCount.value = 4
   }
 }
+
+onMounted(() => {
+  windowSize()
+  window.addEventListener('resize', windowSize)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', windowSize)
+})
 </script>

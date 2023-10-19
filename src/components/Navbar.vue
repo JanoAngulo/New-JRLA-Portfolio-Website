@@ -15,13 +15,13 @@
         </button>
         <div>
           <div class="hidden text-base font-semibold uppercase gap-x-10 lg:flex">
-            <a @click="scrollTop" class="cursor-pointer hover:text-primary dark:hover:text-secondary">Home</a>
+            <a @click="scrollTop" class="cursor-pointer hover:text-primary dark:hover:text-secondary" href="#Home">Home</a>
             <a class="hover:text-primary dark:hover:text-secondary" href="#Features">Features</a>
             <a class="hover:text-primary dark:hover:text-secondary" href="#Portfolio">Portfolio</a>
             <a class="hover:text-primary dark:hover:text-secondary" href="#Resume">Resume</a>
             <a class="hover:text-primary dark:hover:text-secondary" href="#Contact">Contact</a>
             <button class="grid w-4 place-content-center" @click="toggleDarkMode">
-              <i :class="darkMode ? 'fa-solid fa-moon dark:text-yellow-300' : ' fa-solid fa-sun text-yellow-500'" class=""></i>
+              <i :class="darkMode ? 'fa-solid fa-sun text-yellow-500' : 'fa-solid fa-moon dark:text-yellow-300'"></i>
             </button>
           </div>
           <div class="grid w-8 dark:text-white place-content-center hover:text-primary dark:hover:text-secondary">
@@ -31,59 +31,67 @@
       </div>
     </div>
 
-    <div :class="navbarToggle ? '-translate-y-96' : '-translate-y-0'" class="absolute left-0 grid justify-end w-full px-5 py-5 text-base font-semibold text-right uppercase transition-transform duration-700 shadow-md dark:shadow-2xl dark:shadow-zinc-600 gap-y-5 dark:text-white dark:bg-zinc-800 bg-slate-100 lg:px-14">
-      <a @click="scrollTop(), (navbarToggle = true)" class="cursor-pointer hover:text-primary dark:hover:text-secondary">Home</a>
+    <div :class="navbarToggle ? '-translate-y-96' : '-translate-y-0'" class="absolute left-0 grid justify-end w-full px-5 py-5 text-base font-semibold text-right uppercase transition-transform duration-700 shadow-md dark:shadow-2xl dark:shadow-zinc-900 gap-y-5 dark:text-white dark:bg-zinc-800 bg-slate-100 lg:px-14">
+      <a @click="scrollTop(), (navbarToggle = true)" class="cursor-pointer hover:text-primary dark:hover:text-secondary" href="#Home">Home</a>
       <a @click="navbarToggle = true" class="hover:text-primary dark:hover:text-secondary" href="#Features">Features</a>
       <a @click="navbarToggle = true" class="hover:text-primary dark:hover:text-secondary" href="#Portfolio">Portfolio</a>
       <a @click="navbarToggle = true" class="hover:text-primary dark:hover:text-secondary" href="#Resume">Resume</a>
       <a @click="navbarToggle = true" class="hover:text-primary dark:hover:text-secondary" href="#Contact">Contact</a>
       <button class="grid w-4 place-content-center place-self-end" @click="toggleDarkMode">
-        <i :class="darkMode ? 'fa-solid fa-moon dark:text-yellow-300' : ' fa-solid fa-sun text-yellow-500'" class=""></i>
+        <i :class="darkMode ? 'fa-solid fa-sun text-yellow-500' : 'fa-solid fa-moon dark:text-yellow-300'" class=""></i>
       </button>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'Navbar',
-  data() {
-    return {
-      darkMode: false,
-      navbarToggle: true,
-      windowWidth: window.innerWidth
-    }
-  },
+<script setup>
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 
-  mounted() {
-    window.addEventListener('resize', () => {
-      this.windowWidth = window.innerWidth
-      if (this.navbarToggle === false) {
-        this.navbarToggle = this.isMobile
-      }
-    })
-  },
+const darkMode = ref(false)
+const navbarToggle = ref(true)
+const windowWidth = ref(window.innerWidth)
+const systemTheme = ref(window.matchMedia('(prefers-color-scheme: dark)').matches)
 
-  computed: {
-    isMobile() {
-      return this.windowWidth > 768
-    }
-  },
-
-  methods: {
-    scrollTop() {
-      window.scrollTo(0, 0)
-    },
-    toggleDarkMode() {
-      this.darkMode = !this.darkMode
-      if (this.darkMode === false) {
-        localStorage.theme = 'light'
-        document.documentElement.classList.remove('dark')
-      } else {
-        localStorage.theme = 'dark'
-        document.documentElement.classList.add('dark')
-      }
+onMounted(() => {
+  const resizeHandler = () => {
+    windowWidth.value = window.innerWidth
+    if (navbarToggle.value === false) {
+      navbarToggle.value = isMobile.value
     }
   }
+
+  window.addEventListener('resize', resizeHandler)
+
+  if (systemTheme.value) {
+    localStorage.setItem('theme', 'dark')
+    document.documentElement.classList.add('dark')
+    darkMode.value = true
+  } else {
+    localStorage.setItem('theme', 'light')
+    document.documentElement.classList.remove('dark')
+    darkMode.value = false
+  }
+
+  onUnmounted(() => {
+    window.removeEventListener('resize', resizeHandler)
+  })
+})
+
+const scrollTop = () => {
+  window.scrollTo(0, 0)
 }
+
+const toggleDarkMode = () => {
+  if (document.documentElement.classList.contains('dark')) {
+    document.documentElement.classList.remove('dark')
+    localStorage.setItem('theme', 'light')
+    darkMode.value = false
+  } else {
+    document.documentElement.classList.add('dark')
+    localStorage.setItem('theme', 'dark')
+    darkMode.value = true
+  }
+}
+
+const isMobile = computed(() => windowWidth.value > 768)
 </script>

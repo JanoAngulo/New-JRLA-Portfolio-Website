@@ -104,16 +104,7 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import Resume from '@/assets/img/John_Russel_L_Angulo_CV.pdf'
 import data from './PortfolioData'
-export default {
-  name: 'Resume',
-  data() {
-    return {
-      Resume,
-      data
-    }
-  }
-}
 </script>
