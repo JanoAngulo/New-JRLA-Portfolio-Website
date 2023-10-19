@@ -8,7 +8,7 @@
 
       <div class="grid grid-cols-1 gap-y-6 lg:gap-5 xl:gap-10 md:grid-cols-1 lg:grid-cols-3">
         <div class="grid col-span-1 p-5 gap-y-6 card">
-          <img class="object-cover w-full rounded-md lg:aspect-video lg:h-auto h-44" src="@/assets/img/HandShake.jpg" alt="HandShake Icon" />
+          <img class="object-cover w-full rounded-md lg:aspect-video lg:h-auto h-44" src="@/assets/img/HandShake.webp" alt="HandShake Icon" />
           <p class="text-2xl text-center capitalize dark:text-white 2xl:text-4xl lg:text-2xl md:text-4xl font-Gilroy md:text-left">John Russel Angulo</p>
           <p class="text-center md:text-left dark:text-white">I found myself particulary interested in designing, prototyping, and making mockup designs that helped me pursue and become a good Website Developer.</p>
           <div class="grid gap-3 text-center md:gap-0 md:text-left dark:text-white">

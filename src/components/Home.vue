@@ -17,9 +17,9 @@
       <div class="grid py-8 lg:hidden place-content-center">
         <div class="max-w-[20rem] min-w-0 p-5 rounded-3xl card">
           <swiper class="pointer-events-none rounded-xl" :modules="modules" :autoplay="{ delay: 3500 }" :space-between="20" :loop="true">
-            <swiper-slide><img class="rounded-xl" src="@/assets/img/picture.png" alt="" /></swiper-slide>
-            <swiper-slide><img class="rounded-xl" src="@/assets/img/picture2.png" alt="" /></swiper-slide>
-            <swiper-slide><img class="rounded-xl" src="@/assets/img/picture3.png" alt="" /></swiper-slide>
+            <swiper-slide><img class="rounded-xl" src="@/assets/img/picture.webp" alt="" /></swiper-slide>
+            <swiper-slide><img class="rounded-xl" src="@/assets/img/picture2.webp" alt="" /></swiper-slide>
+            <swiper-slide><img class="rounded-xl" src="@/assets/img/picture3.webp" alt="" /></swiper-slide>
           </swiper>
         </div>
       </div>
@@ -42,9 +42,9 @@
     <div class="hidden lg:grid place-content-center pt-14">
       <div class="hover:scale-[1.02] duration-150 ease-out transition-transform max-w-[39rem] min-w-0 p-5 rounded-3xl card">
         <swiper class="pointer-events-none rounded-xl" :modules="modules" :autoplay="{ delay: 3500 }" :space-between="20" :loop="true">
-          <swiper-slide><img class="rounded-xl" src="@/assets/img/picture.png" alt="" /></swiper-slide>
-          <swiper-slide><img class="rounded-xl" src="@/assets/img/picture2.png" alt="" /></swiper-slide>
-          <swiper-slide><img class="rounded-xl" src="@/assets/img/picture3.png" alt="" /></swiper-slide>
+          <swiper-slide><img class="rounded-xl" src="@/assets/img/picture.webp" alt="" /></swiper-slide>
+          <swiper-slide><img class="rounded-xl" src="@/assets/img/picture2.webp" alt="" /></swiper-slide>
+          <swiper-slide><img class="rounded-xl" src="@/assets/img/picture3.webp" alt="" /></swiper-slide>
         </swiper>
       </div>
     </div>
