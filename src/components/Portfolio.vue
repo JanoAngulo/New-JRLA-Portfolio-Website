@@ -1,4 +1,4 @@
-script<template>
+<template>
   <div id="Portfolio" class="scroll-mt-40">
     <div class="flex flex-col gap-6 px-5 mb-32 lg:px-14">
       <div class="text-center font-Gilroy">
@@ -6,7 +6,7 @@ script<template>
         <p class="py-3 text-5xl capitalize xl:text-7xl dark:text-white">my portfolio</p>
       </div>
 
-      <div v-for="(category, index) in data.portfolio" :key="index" :id="index">
+      <div v-for="(category, index) in portfolioWithContent" :key="index" :id="index">
         <p class="pb-4 text-3xl capitalize font-Gilroy dark:text-secondary">{{ index }}</p>
         <swiper class="mySwiper" :loop="isDivisibleByThree(category)" :grab-cursor="true" :slidesPerView="slidesCount" :modules="modules" :autoplay="{ delay: 3500, disableOnInteraction: false }" :space-between="20">
           <swiper-slide :id="portfolioId(item.title)" class="p-5 transition-all duration-200 ease-out card group lg:hover:-translate-y-2" v-for="(item, index) in category" :key="index">
@@ -59,7 +59,7 @@ script<template>
 </style>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 import data from './PortfolioData.js'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay } from 'swiper/modules'
@@ -78,6 +78,16 @@ const windowSize = () => {
     slidesCount.value = 1
   }
 }
+
+let portfolioWithContent = computed(() => {
+  let result = {}
+  for (let category in data.portfolio) {
+    if (data.portfolio[category].length > 0) {
+      result[category] = data.portfolio[category]
+    }
+  }
+  return result
+})
 
 onMounted(() => {
   windowSize()

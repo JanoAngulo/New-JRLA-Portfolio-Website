@@ -19,7 +19,7 @@ export default {
         thumbnail: coreProc,
         feature: 'website',
         title: 'CoreProc, Inc. Clone',
-        description: 'The project was inspired to the Company that I am working CoreProc, Inc. This is an approach to clone and redesign the landing page of our main website. Some of the assets that are included in here are gathered in the CoreProc website, but the redesign was fixed and manipulated in Adobe XD.\n\nThe approach I took for it is to be lively featuring people, animations, and other colors to showcase life, growth, and technology.',
+        description: 'The project was inspired by the Company that I am working CoreProc, Inc. This is an approach to clone and redesign the landing page of our main website. Some of the assets that are included here are gathered in the CoreProc website, but the redesign was fixed and manipulated in Adobe XD.\n\nThe approach I took for it is to be lively featuring people, animations, and other colors to showcase life, growth, and technology.',
         link: 'https://coreproc-clone.web.app/'
       },
 

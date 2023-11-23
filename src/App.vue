@@ -19,4 +19,3 @@ import Portfolio from './components/Portfolio.vue'
 import Resume from './components/Resume.vue'
 import Contact from './components/Contact.vue'
 </script>
-
