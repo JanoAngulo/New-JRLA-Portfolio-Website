@@ -82,7 +82,7 @@ const windowSize = () => {
 let portfolioWithContent = computed(() => {
   let result = {}
   for (let category in data.portfolio) {
-    if (data.portfolio[category].length > 0) {
+    if (data.portfolio[category].length != 0) {
       result[category] = data.portfolio[category]
     }
   }

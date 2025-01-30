@@ -114,7 +114,7 @@ export default {
   resume: [
     {
       title: 'UI Engineer',
-      date: 'CoreProc, Inc. | 2022 - Present',
+      date: 'CoreProc, Inc. | 2022 - 2025',
       about: 'Creating UI/UX via Figma and Adobe XD, making Front-End websites using Vuejs, Next.js, Sass, and TailwindCss'
     },
     {

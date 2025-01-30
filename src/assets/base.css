@@ -17,7 +17,7 @@
   }
 
   .input {
-    @apply border rounded-md shadow-sm placeholder-slate-400 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary invalid:text-primary focus:invalid:border-primary focus:invalid:ring-primary;
+    @apply border rounded-md shadow-sm dark:bg-zinc-700 placeholder-slate-400 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary invalid:text-primary focus:invalid:border-primary focus:invalid:ring-primary;
   }
 }
 
