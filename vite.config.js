@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
@@ -11,5 +10,8 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       '~fontawesome': fileURLToPath(new URL('./public/fonts/fontawesome6/css', import.meta.url)),
     }
+  },
+  define: {
+    '__VUE_PROD_HYDRATION_MISMATCH_DETAILS__': false
   }
 })
