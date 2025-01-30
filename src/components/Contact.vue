@@ -62,27 +62,27 @@
 </template>
 
 <script setup>
-import { vMaska } from 'maska'
-import { ref, onMounted, onUnmounted } from 'vue'
+  import { vMaska } from 'maska'
+  import { ref, onMounted, onUnmounted } from 'vue'
 
-const rowCount = ref(8)
+  const rowCount = ref(8)
 
-const windowSize = () => {
-  if (window.innerWidth > 1440) {
-    rowCount.value = 8
-  } else if (window.innerWidth >= 1024) {
-    rowCount.value = 6
-  } else if (window.innerWidth <= 768) {
-    rowCount.value = 4
+  const windowSize = () => {
+    if (window.innerWidth > 1440) {
+      rowCount.value = 8
+    } else if (window.innerWidth >= 1024) {
+      rowCount.value = 6
+    } else if (window.innerWidth <= 768) {
+      rowCount.value = 4
+    }
   }
-}
 
-onMounted(() => {
-  windowSize()
-  window.addEventListener('resize', windowSize)
-})
+  onMounted(() => {
+    windowSize()
+    window.addEventListener('resize', windowSize)
+  })
 
-onUnmounted(() => {
-  window.removeEventListener('resize', windowSize)
-})
+  onUnmounted(() => {
+    window.removeEventListener('resize', windowSize)
+  })
 </script>
