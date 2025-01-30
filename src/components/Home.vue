@@ -9,8 +9,12 @@
           <vue-typewriter-effect class="capitalize dark:text-white" :strings="titles" :pause-for="3500"> </vue-typewriter-effect>
         </p>
         <div class="grid px-4 sm:px-10 lg:px-0 xl:text-lg lg:pr-14 lg:text-base text-slate-600 dark:text-zinc-400">
-          <p>I’m a Front End Developer, UI/UX Designer, Video Editor, and Vector Artist living in the Philippines.</p>
-          <p>Started with creating basic websites when I was in college, learning UI/UX, taking video editing and videography as a hobby, and making different vector art really helped me boost my creative side.</p>
+          <p class="text-pretty">
+            I’m a Front End Developer, UI/UX Designer, Video Editor, and Vector Artist living in the Philippines.
+            <br class="hidden lg:block"> <br class="hidden lg:block"> Started with creating basic websites when I was in college, learning UI/UX, taking video editing and videography as a hobby, and making different vector art really helped me boost my
+            creative side.
+          </p>
+          <p></p>
         </div>
       </div>
 
@@ -52,11 +56,11 @@
 </template>
 
 <script setup>
-import VueTypewriterEffect from 'vue-typewriter-effect'
-import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Autoplay } from 'swiper/modules'
-import { ref } from 'vue'
+  import VueTypewriterEffect from 'vue-typewriter-effect'
+  import { Swiper, SwiperSlide } from 'swiper/vue'
+  import { Autoplay } from 'swiper/modules'
+  import { ref } from 'vue'
 
-const titles = ref(['front-end developer.', 'UI/UX Designer.', 'video editor.', 'vector artist.'])
-const modules = [Autoplay]
+  const titles = ref(['front-end developer.', 'UI/UX Designer.', 'video editor.', 'vector artist.'])
+  const modules = [Autoplay]
 </script>

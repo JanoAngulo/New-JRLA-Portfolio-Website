@@ -1,4 +1,4 @@
-import './assets/base.css'
+import './assets/input.css'
 import 'swiper/css'
 
 import { createApp } from 'vue'
