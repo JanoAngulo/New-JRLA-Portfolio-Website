@@ -105,6 +105,6 @@
 </template>
 
 <script setup>
-import Resume from '@/assets/img/John_Russel_L_Angulo_CV.pdf'
+import Resume from '@/assets/img/John_Russel_Angulo_CV.pdf'
 import data from './PortfolioData'
 </script>
