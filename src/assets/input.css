@@ -9,15 +9,15 @@
   }
 
   body {
-    @apply dark:bg-zinc-800 bg-background;
+    @apply dark:bg-dark bg-light;
   }
 
   .card {
-    @apply dark:bg-zinc-900 bg-softWhite rounded-xl drop-shadow-xl;
+    @apply dark:bg-dark-card bg-light-card rounded-xl drop-shadow-xl;
   }
 
   .input {
-    @apply border rounded-md shadow-sm dark:bg-zinc-700 dark:text-white placeholder-slate-400 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary;
+    @apply border rounded-md shadow-sm dark:bg-zinc-700 dark:text-white placeholder-slate-400 focus:outline-none focus:border-dark-primary focus:ring-1 focus:ring-dark-primary;
   }
 }
 
@@ -28,5 +28,5 @@
 
 @font-face {
   font-family: 'Gilroy';
-  src: url('/fonts/Gilroy/Gilroy-Bold.woff2') format('woff2');
+  src: url('/fonts/Gilroy/Gilroy-Regular.woff') format('woff');
 }

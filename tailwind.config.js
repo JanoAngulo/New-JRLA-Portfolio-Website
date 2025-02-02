@@ -5,10 +5,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#ff3656',
-        secondary: '#ffca26',
-        background: '#eceff4',
-        softWhite: '#f5f7fa'
+        dark: '#27272A',
+        'dark-card': '#18181B',
+        'dark-primary': '#FFCA26',
+
+        light: '#ECEFF4',
+        'light-card': '#F5F7FA',
+        'light-primary': '#FF3656'
       },
       fontFamily: {
         ProductSans: ['ProductSans'],
